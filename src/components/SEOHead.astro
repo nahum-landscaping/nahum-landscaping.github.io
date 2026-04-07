@@ -7,6 +7,7 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   canonicalUrl = Astro.url.href,
   ogImage = '/images/og-default.jpg',
   type = 'website',
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = title === 'Home'
@@ -74,6 +76,7 @@ const jsonLd = {
 <!-- Primary Meta Tags -->
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
 <link rel="canonical" href={canonicalUrl} />
 
 <!-- Favicon -->

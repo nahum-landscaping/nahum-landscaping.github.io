@@ -1,0 +1,27 @@
+---
+interface Props {
+  bg?: 'white' | 'sand' | 'green-light';
+  class?: string;
+  id?: string;
+  'aria-labelledby'?: string;
+  'aria-label'?: string;
+}
+
+const {
+  bg = 'white',
+  class: className = '',
+  ...attrs
+} = Astro.props;
+
+const bgClasses: Record<string, string> = {
+  white: 'bg-white',
+  sand: 'bg-sand-50',
+  'green-light': 'bg-green-50',
+};
+---
+
+<section class:list={['py-10 sm:py-15', bgClasses[bg], className]} {...attrs}>
+  <div class="max-w-7xl mx-auto px-4">
+    <slot />
+  </div>
+</section>

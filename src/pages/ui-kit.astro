@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Button, PhoneButton } from '../components/ui';
+
+/* ── Data ── */
+
+const colors = [
+  { token: 'white', value: '#ffffff', label: 'Background', border: true },
+  { token: 'green-950', value: '#0a2e1a', label: 'Foreground' },
+  { token: 'green-700', value: '#15803d', label: 'Primary' },
+  { token: 'green-800', value: '#166534', label: 'Primary Dark' },
+  { token: 'green-900', value: '#14532d', label: 'Dark' },
+  { token: 'sand-50', value: '#faf8f5', label: 'Surface', border: true },
+  { token: 'sand-200', value: '#e8dcc8', label: 'Border' },
+  { token: 'gray-600', value: '#4b5563', label: 'Muted' },
+];
+
+const typeScale = [
+  { cls: 'text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight', label: 'Display', size: 'clamp(36px, 5vw, 60px)', sample: 'Page Headline', responsive: true },
+  { cls: 'text-4xl sm:text-5xl font-extrabold', label: 'H1', size: '3rem / 48px', sample: 'Primary Page Title' },
+  { cls: 'text-3xl sm:text-4xl font-bold', label: 'H2', size: '2.25rem / 36px', sample: 'Section Heading' },
+  { cls: 'text-2xl sm:text-3xl font-bold', label: 'H3', size: '1.875rem / 30px', sample: 'Subsection Heading' },
+  { cls: 'text-xl font-bold', label: 'H4', size: '1.5rem / 24px', sample: 'Card Title' },
+  { cls: 'text-lg', label: 'Body Large', size: '1.125rem / 18px', sample: 'A lead paragraph that introduces the section with slightly larger text for emphasis and visual hierarchy.' },
+  { cls: 'text-base', label: 'Body', size: '1rem / 16px', sample: 'Standard body copy used for paragraphs, descriptions, and general content throughout the interface.' },
+  { cls: 'text-sm', label: 'Body Small', size: '0.875rem / 14px', sample: 'Secondary detail text, metadata, and supporting information' },
+  { cls: 'text-xs font-semibold uppercase tracking-wide', label: 'Label', size: '0.75rem / 12px', sample: 'Section Label' },
+  { cls: 'text-xs', label: 'Caption', size: '0.75rem / 12px', sample: 'Caption text \u00b7 Meta \u00b7 Details' },
+];
+
+const spacing = [
+  { token: '--space-1', value: '8px', width: 8 },
+  { token: '--space-2', value: '16px', width: 16 },
+  { token: '--space-3', value: '24px', width: 24 },
+  { token: '--space-4', value: '32px', width: 32 },
+  { token: '--space-5', value: '40px', width: 40 },
+  { token: '--space-6', value: '48px', width: 48 },
+  { token: '--space-7', value: '64px', width: 64 },
+  { token: '--space-8', value: '80px', width: 80 },
+  { token: '--space-9', value: '96px', width: 96 },
+  { token: '--space-10', value: '128px', width: 128 },
+];
+
+const radii = [
+  { value: '4px', width: 4, label: 'Small — buttons, badges' },
+  { value: '8px', width: 8, label: 'Medium — inputs, small cards' },
+  { value: '16px', width: 16, label: 'Large — cards, images' },
+  { value: '9999px', width: 9999, label: 'Full — pills, dots' },
+];
+---
+
+<BaseLayout
+  title="Design System"
+  description="Internal design system reference — colors, typography, spacing, and components."
+  noindex={true}
+>
+  <div style="padding-top:96px; padding-bottom:80px">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+
+      <!-- Header -->
+      <div style="margin-bottom:80px">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500" style="margin-bottom:16px">
+          Internal Reference
+        </p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-green-950" style="margin-bottom:24px">
+          Design System
+        </h1>
+        <p class="text-base text-gray-500" style="max-width:560px; line-height:1.65">
+          Live token reference for the design system.
+          All values render from the actual Tailwind theme
+          defined in the global stylesheet.
+        </p>
+      </div>
+
+      <!-- ── Colors ── -->
+      <section style="margin-bottom:80px">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sand-500" style="margin-bottom:16px">
+          Colors
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          Color Tokens
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4" style="gap:24px">
+          {colors.map((c) => (
+            <div>
+              <div
+                style={`background:${c.value}; height:80px; border-radius:8px;${c.border ? ' border:1px solid #e8dcc8;' : ''}`}
+              />
+              <p class="text-sm font-medium text-green-950" style="margin-top:8px">{c.label}</p>
+              <p class="text-xs text-gray-400">{c.value}</p>
+              <p class="text-gray-400 font-mono" style="font-size:0.65rem">--color-{c.token}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Typography ── -->
+      <section style="margin-bottom:80px">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sand-500" style="margin-bottom:16px">
+          Typography
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          Type Scale
+        </h2>
+        <div style="display:flex; flex-direction:column; gap:40px">
+          {typeScale.map((t) => (
+            <div style="border-bottom:1px solid #e8dcc8; padding-bottom:24px">
+              <div class="flex flex-wrap items-baseline gap-3" style="margin-bottom:8px">
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] text-sand-500">{t.label}</span>
+                <span class="text-xs text-gray-400 font-mono">.{t.cls.split(' ')[0]}</span>
+                <span class="text-xs text-gray-400">{t.size}</span>
+              </div>
+              <p
+                class={`${t.cls} text-green-950`}
+                style={t.responsive ? `font-size:${t.size}` : undefined}
+              >
+                {t.sample}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Spacing ── -->
+      <section style="margin-bottom:80px">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sand-500" style="margin-bottom:16px">
+          Spacing
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          8pt Grid
+        </h2>
+        <div style="display:flex; flex-direction:column; gap:16px">
+          {spacing.map((s) => (
+            <div class="flex items-center" style="gap:24px">
+              <div style={`width:${s.width}px; height:8px; background:#bfa878; border-radius:2px; flex-shrink:0`}></div>
+              <span class="text-sm text-green-950 font-mono" style="min-width:100px">{s.token}</span>
+              <span class="text-xs text-gray-400">{s.value}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Border Radius ── -->
+      <section style="margin-bottom:80px">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sand-500" style="margin-bottom:16px">
+          Radius
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          Border Radius
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4" style="gap:24px">
+          {radii.map((r) => (
+            <div>
+              <div style={`width:80px; height:80px; background:#f2f0ed; border:2px solid #bfa878; border-radius:${r.value}`}></div>
+              <p class="text-sm text-green-950 font-mono" style="margin-top:8px">{r.value}</p>
+              <p class="text-xs text-gray-400">{r.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Buttons ── -->
+      <section style="margin-bottom:80px">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sand-500" style="margin-bottom:16px">
+          Components
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          Buttons
+        </h2>
+        <div
+          class="flex flex-wrap items-center"
+          style="gap:16px; background:#8A8580; padding:32px; border-radius:8px"
+        >
+          <Button variant="primary" size="md">Primary</Button>
+          <Button variant="secondary" size="md">Secondary</Button>
+          <Button variant="outline" size="md">Outline</Button>
+          <PhoneButton variant="outline" size="md" />
+        </div>
+      </section>
+
+      <!-- ── Form Inputs ── -->
+      <section style="margin-bottom:80px">
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          Form Inputs
+        </h2>
+        <div style="max-width:400px; display:flex; flex-direction:column; gap:24px">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-[0.2em] text-gray-500" style="margin-bottom:8px">
+              Text Input
+            </label>
+            <input
+              type="text"
+              placeholder="Placeholder text"
+              class="w-full text-green-950 border border-sand-200 focus:outline-none focus:ring-2 focus:ring-green-500/50"
+              style="background:#f2f0ed; padding:0.875rem 1rem; border-radius:8px"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-[0.2em] text-gray-500" style="margin-bottom:8px">
+              Select
+            </label>
+            <select
+              class="w-full text-green-950 border border-sand-200 focus:outline-none focus:ring-2 focus:ring-green-500/50 appearance-none"
+              style="background:#f2f0ed; padding:0.875rem 2.5rem 0.875rem 1rem; border-radius:8px; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat:no-repeat; background-position:right 0.75rem center"
+            >
+              <option>Option One</option>
+              <option>Option Two</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-[0.2em] text-gray-500" style="margin-bottom:8px">
+              Textarea
+            </label>
+            <textarea
+              rows="3"
+              placeholder="Enter your message here..."
+              class="w-full text-green-950 border border-sand-200 focus:outline-none focus:ring-2 focus:ring-green-500/50 resize-none"
+              style="background:#f2f0ed; padding:0.875rem 1rem; border-radius:8px"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Section Spacing ── -->
+      <section style="margin-bottom:80px">
+        <h2 class="text-3xl sm:text-4xl font-bold text-green-950" style="margin-bottom:40px">
+          Section Spacing
+        </h2>
+        <div class="text-base text-gray-500" style="display:flex; flex-direction:column; gap:16px">
+          <p><code class="text-xs text-gray-400 font-mono">.section</code> — 40px mobile / 60px desktop (py-10 sm:py-15)</p>
+          <p><code class="text-xs text-gray-400 font-mono">.section-hero</code> — py-20 sm:py-28 lg:py-36</p>
+          <p><code class="text-xs text-gray-400 font-mono">.container</code> — max-width 1280px, px-4 (16px) base padding</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

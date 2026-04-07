@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
+import { PageHeader, Section, Button, CheckList } from '../components/ui';
 
 const services = [
   {
@@ -122,24 +123,17 @@ const services = [
   title="Landscaping Services"
   description="Professional landscaping services in Sanford, FL — lawn maintenance, landscape design, tree trimming, irrigation, mulching, sod installation, seasonal cleanup, and hardscaping. Free estimates."
 >
-  <!-- Page Header -->
-  <section class="bg-green-900 py-16 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
-        Landscaping Services in Sanford, FL
-      </h1>
-      <p class="text-green-100 text-xl max-w-3xl mx-auto">
-        Comprehensive lawn care and landscaping solutions for residential and commercial properties in Sanford and surrounding areas.
-      </p>
-    </div>
-  </section>
+  <PageHeader
+    title="Landscaping Services in Sanford, FL"
+    subtitle="Comprehensive lawn care and landscaping solutions for residential and commercial properties in Sanford and surrounding areas."
+  />
 
   <!-- Services List -->
-  <section class="py-16 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 space-y-16">
+  <Section>
+    <div class="space-y-10">
       {services.map((service, i) => (
         <article id={service.id} class="scroll-mt-24">
-          <div class:list={['grid md:grid-cols-2 gap-8 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
+          <div class:list={['grid md:grid-cols-2 gap-6 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
             <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
               <!-- TODO: Replace stock images with actual project photos -->
               <img
@@ -154,26 +148,16 @@ const services = [
             <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
               <h2 class="text-2xl sm:text-3xl font-bold text-green-900 mb-4">{service.title}</h2>
               <p class="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-              <ul class="space-y-2 mb-6">
-                {service.details.map((detail) => (
-                  <li class="flex items-start gap-2 text-sm text-gray-700">
-                    <svg class="h-5 w-5 text-green-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/contact/"
-                class="inline-block bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold text-sm transition-colors"
-              >
-                Get a Free Estimate
-              </a>
+              <div class="mb-6">
+                <CheckList items={service.details} />
+              </div>
+              <Button href="/contact/" size="md">Get a Free Estimate</Button>
             </div>
           </div>
         </article>
       ))}
     </div>
-  </section>
+  </Section>
 
   <CTABanner
     heading="Need Landscaping Help in Sanford?"

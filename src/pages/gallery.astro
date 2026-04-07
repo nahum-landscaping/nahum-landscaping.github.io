@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
+import { PageHeader, Section, Button, Badge } from '../components/ui';
 
 // TODO: Replace ALL placeholder images with actual project photos
 const projects = [
@@ -20,61 +21,45 @@ const projects = [
   title="Gallery"
   description="See our landscaping work in Sanford, FL — lawn care, landscape design, hardscaping, tree trimming, and more. View our portfolio of completed projects."
 >
-  <!-- Page Header -->
-  <section class="bg-green-900 py-16 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
-        Our Work
-      </h1>
-      <p class="text-green-100 text-xl max-w-3xl mx-auto">
-        Browse our portfolio of landscaping projects completed for homes and businesses in Sanford, FL and surrounding areas.
-      </p>
-    </div>
-  </section>
+  <PageHeader
+    title="Our Work"
+    subtitle="Browse our portfolio of landscaping projects completed for homes and businesses in Sanford, FL and surrounding areas."
+  />
 
   <!-- Gallery Grid -->
-  <section class="py-16 sm:py-20" aria-labelledby="gallery-heading">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 id="gallery-heading" class="sr-only">Project Gallery</h2>
-      <!-- TODO: Replace placeholder images with actual before/after project photos -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <figure class="group rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-            <div class="relative overflow-hidden">
-              <img
-                src={project.src}
-                alt={project.alt}
-                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-                width="600"
-                height="400"
-              />
-              <div class="absolute top-3 left-3">
-                <span class="bg-green-800/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  {project.category}
-                </span>
-              </div>
+  <Section aria-labelledby="gallery-heading">
+    <h2 id="gallery-heading" class="sr-only">Project Gallery</h2>
+    <!-- TODO: Replace placeholder images with actual before/after project photos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <figure class="group rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <div class="relative overflow-hidden">
+            <img
+              src={project.src}
+              alt={project.alt}
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="absolute top-3 left-3">
+              <Badge text={project.category} />
             </div>
-            <figcaption class="p-4 bg-white">
-              <p class="text-sm text-gray-600">{project.alt}</p>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-
-      <div class="text-center mt-12">
-        <p class="text-gray-500 text-sm mb-4">
-          Want to see more? Follow us on social media for our latest projects.
-        </p>
-        <a
-          href="/contact/"
-          class="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-        >
-          Start Your Project Today
-        </a>
-      </div>
+          </div>
+          <figcaption class="p-4 bg-white">
+            <p class="text-sm text-gray-600">{project.alt}</p>
+          </figcaption>
+        </figure>
+      ))}
     </div>
-  </section>
+
+    <div class="text-center mt-10">
+      <p class="text-gray-500 text-sm mb-4">
+        Want to see more? Follow us on social media for our latest projects.
+      </p>
+      <Button href="/contact/" size="lg">Start Your Project Today</Button>
+    </div>
+  </Section>
 
   <CTABanner
     heading="Love What You See?"

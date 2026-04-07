@@ -9,15 +9,16 @@ interface Props {
   description: string;
   ogImage?: string;
   type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
-const { title, description, ogImage, type } = Astro.props;
+const { title, description, ogImage, type, noindex } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <SEOHead title={title} description={description} ogImage={ogImage} type={type} />
+    <SEOHead title={title} description={description} ogImage={ogImage} type={type} noindex={noindex} />
   </head>
   <body class="bg-white text-green-950 font-sans antialiased">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-green-700 text-white px-4 py-2 rounded z-50">

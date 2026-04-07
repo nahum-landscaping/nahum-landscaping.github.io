@@ -1,0 +1,49 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  fullWidth?: boolean;
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type,
+  class: className = '',
+  fullWidth = false,
+  ...attrs
+} = Astro.props;
+
+const base = 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors text-center';
+
+const variants: Record<string, string> = {
+  primary: 'bg-green-700 hover:bg-green-800 text-white',
+  secondary: 'bg-white text-green-800 hover:bg-green-50',
+  outline: 'border-2 border-white text-white hover:bg-white hover:text-green-900',
+  ghost: 'text-green-700 hover:text-green-800 underline underline-offset-4',
+};
+
+const sizes: Record<string, string> = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-sm',
+  lg: 'px-8 py-4 text-lg',
+};
+
+const classes = [base, variants[variant], sizes[size], fullWidth && 'w-full', className].filter(Boolean).join(' ');
+const Tag = href ? 'a' : 'button';
+---
+
+{href ? (
+  <a href={href} class={classes} {...attrs}>
+    <slot />
+  </a>
+) : (
+  <button type={type || 'button'} class={classes} {...attrs}>
+    <slot />
+  </button>
+)}

@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../config';
+import { Button } from './ui';
 
 const currentPath = Astro.url.pathname;
 
@@ -50,12 +51,7 @@ const navLinks = [
           {link.label}
         </a>
       ))}
-      <a
-        href="/contact/"
-        class="bg-green-700 hover:bg-green-800 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
-      >
-        Get a Free Quote
-      </a>
+      <Button href="/contact/" size="sm">Get a Free Quote</Button>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -86,12 +82,9 @@ const navLinks = [
         {link.label}
       </a>
     ))}
-    <a
-      href="/contact/"
-      class="block mt-3 bg-green-700 hover:bg-green-800 text-white px-5 py-3 rounded-lg text-sm font-semibold text-center transition-colors"
-    >
-      Get a Free Quote
-    </a>
+    <div class="mt-3">
+      <Button href="/contact/" size="md" fullWidth>Get a Free Quote</Button>
+    </div>
   </div>
 </header>
 
