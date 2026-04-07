@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const services = [
+  {
+    id: 'lawn-maintenance',
+    title: 'Lawn Maintenance & Mowing',
+    description: 'Keep your Sanford lawn looking its best with our comprehensive maintenance packages. We handle mowing, edging, trimming, and blowing — on a weekly or bi-weekly schedule that works for you.',
+    details: [
+      'Professional mowing with sharp, clean cuts',
+      'Precise edging along sidewalks, driveways, and beds',
+      'String trimming around obstacles and fences',
+      'Complete debris blowing and cleanup',
+      'Florida grass expertise: St. Augustine, Bermuda, Zoysia, Bahia',
+    ],
+    image: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=600&q=80',
+    imageAlt: 'Freshly mowed green lawn with clean edging in Sanford, Florida',
+  },
+  {
+    id: 'landscape-design',
+    title: 'Landscape Design & Installation',
+    description: 'Transform your outdoor space with a custom landscape design tailored to Florida\'s climate. From tropical paradise to low-maintenance native plantings, we bring your vision to life.',
+    details: [
+      'Custom design consultations',
+      'Florida-native and tropical plant selection',
+      'Drought-tolerant and low-water designs',
+      'Seasonal color rotations',
+      'Full installation from plants to irrigation',
+    ],
+    image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80',
+    imageAlt: 'Beautiful tropical landscape design with palm trees and colorful flowers',
+  },
+  {
+    id: 'tree-trimming',
+    title: 'Tree Trimming & Pruning',
+    description: 'Professional tree care to keep your property safe and beautiful. Proper trimming promotes healthy growth and is essential for hurricane preparedness in Central Florida.',
+    details: [
+      'Crown thinning and shaping',
+      'Dead branch removal',
+      'Hurricane preparation trimming',
+      'Palm tree trimming and maintenance',
+      'Stump grinding available',
+    ],
+    image: 'https://images.unsplash.com/photo-1598902108854-d1446a05c413?w=600&q=80',
+    imageAlt: 'Professional tree trimming service on mature oak tree',
+  },
+  {
+    id: 'irrigation',
+    title: 'Irrigation Systems',
+    description: 'Efficient sprinkler systems designed for Florida\'s sandy soil and seasonal water restrictions. We install, repair, and maintain irrigation to keep your landscape healthy while conserving water.',
+    details: [
+      'New sprinkler system design and installation',
+      'Sprinkler head repair and replacement',
+      'System audits and efficiency upgrades',
+      'Rain sensor installation',
+      'Compliance with Sanford water restrictions',
+    ],
+    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80',
+    imageAlt: 'Sprinkler irrigation system watering a green lawn',
+  },
+  {
+    id: 'mulching',
+    title: 'Mulching & Flower Beds',
+    description: 'Fresh mulch protects your plants, retains moisture in the Florida heat, and gives your landscape beds a polished, well-maintained appearance.',
+    details: [
+      'Premium hardwood and pine bark mulch',
+      'Bed edging and shaping',
+      'Weed removal and prevention',
+      'Seasonal flower planting',
+      'Bed renovation and soil amendment',
+    ],
+    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80',
+    imageAlt: 'Well-mulched landscape bed with tropical flowers',
+  },
+  {
+    id: 'sod-installation',
+    title: 'Sod Installation',
+    description: 'Replace bare, patchy, or damaged turf with fresh sod. We use Florida-appropriate grass varieties and prepare the soil properly for a lawn that establishes quickly and lasts.',
+    details: [
+      'St. Augustine, Bermuda, Zoysia, and Bahia sod',
+      'Proper soil preparation and grading',
+      'Full or partial lawn replacements',
+      'New construction sod installation',
+      'Post-installation care instructions',
+    ],
+    image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80',
+    imageAlt: 'Fresh sod being installed on prepared ground for new lawn',
+  },
+  {
+    id: 'seasonal-cleanup',
+    title: 'Seasonal Cleanup',
+    description: 'Keep your property clean and well-maintained through every Florida season. From leaf removal to post-hurricane cleanup, we handle the heavy lifting.',
+    details: [
+      'Spring and fall property cleanups',
+      'Leaf and debris removal',
+      'Post-storm and hurricane cleanup',
+      'Gutter cleaning',
+      'Property preparation for HOA inspections',
+    ],
+    image: 'https://images.unsplash.com/photo-1505659903052-300a02e5a2c8?w=600&q=80',
+    imageAlt: 'Yard cleanup with professional leaf removal and debris clearing',
+  },
+  {
+    id: 'hardscaping',
+    title: 'Hardscaping',
+    description: 'Add structure and functionality to your outdoor space with custom hardscaping. Patios, walkways, retaining walls, and more — built to withstand Florida\'s weather.',
+    details: [
+      'Paver patios and walkways',
+      'Retaining walls',
+      'Outdoor kitchens and fire pits',
+      'Driveway borders and edging',
+      'Drainage solutions',
+    ],
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80',
+    imageAlt: 'Beautiful paver patio and walkway with landscaping',
+  },
+];
+---
+
+<BaseLayout
+  title="Landscaping Services"
+  description="Professional landscaping services in Sanford, FL — lawn maintenance, landscape design, tree trimming, irrigation, mulching, sod installation, seasonal cleanup, and hardscaping. Free estimates."
+>
+  <!-- Page Header -->
+  <section class="bg-green-900 py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+        Landscaping Services in Sanford, FL
+      </h1>
+      <p class="text-green-100 text-xl max-w-3xl mx-auto">
+        Comprehensive lawn care and landscaping solutions for residential and commercial properties in Sanford and surrounding areas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services List -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 space-y-16">
+      {services.map((service, i) => (
+        <article id={service.id} class="scroll-mt-24">
+          <div class:list={['grid md:grid-cols-2 gap-8 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
+            <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
+              <!-- TODO: Replace stock images with actual project photos -->
+              <img
+                src={service.image}
+                alt={service.imageAlt}
+                class="rounded-xl shadow-md w-full h-64 sm:h-80 object-cover"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
+              <h2 class="text-2xl sm:text-3xl font-bold text-green-900 mb-4">{service.title}</h2>
+              <p class="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+              <ul class="space-y-2 mb-6">
+                {service.details.map((detail) => (
+                  <li class="flex items-start gap-2 text-sm text-gray-700">
+                    <svg class="h-5 w-5 text-green-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/contact/"
+                class="inline-block bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold text-sm transition-colors"
+              >
+                Get a Free Estimate
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Need Landscaping Help in Sanford?"
+    text="Contact us today for a free estimate. No job is too big or too small."
+  />
+</BaseLayout>

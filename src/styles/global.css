@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-green-950: #0a2e1a;
+  --color-green-900: #14532d;
+  --color-green-800: #166534;
+  --color-green-700: #15803d;
+  --color-green-600: #16a34a;
+  --color-green-500: #22c55e;
+  --color-green-100: #dcfce7;
+  --color-green-50: #f0fdf4;
+
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f5f0e8;
+  --color-sand-200: #e8dcc8;
+  --color-sand-300: #d4c4a0;
+  --color-sand-400: #bfa878;
+  --color-sand-500: #a68c55;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure good tap targets on mobile */
+a, button {
+  min-height: 44px;
+  min-width: 44px;
+}

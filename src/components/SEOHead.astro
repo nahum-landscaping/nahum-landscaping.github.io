@@ -1,0 +1,111 @@
+---
+import { siteConfig } from '../config';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  canonicalUrl = Astro.url.href,
+  ogImage = '/images/og-default.jpg',
+  type = 'website',
+} = Astro.props;
+
+const fullTitle = title === 'Home'
+  ? `${siteConfig.name} | Professional Landscaping in Sanford, FL`
+  : `${title} | ${siteConfig.name} — Sanford, FL`;
+
+// JSON-LD LocalBusiness structured data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LandscapingBusiness',
+  name: siteConfig.name,
+  description: `Professional landscaping and lawn care services in ${siteConfig.serviceArea}. Licensed & insured.`,
+  url: Astro.site?.toString(),
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.state,
+    postalCode: siteConfig.address.zip,
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.coordinates.latitude,
+    longitude: siteConfig.coordinates.longitude,
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Sanford',
+    containedInPlace: {
+      '@type': 'State',
+      name: 'Florida',
+    },
+  },
+  openingHoursSpecification: siteConfig.hoursStructured.map((schedule) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: schedule.days,
+    opens: schedule.opens,
+    closes: schedule.closes,
+  })),
+  priceRange: '$$',
+  image: ogImage,
+  sameAs: [
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
+    siteConfig.social.google,
+  ],
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content={siteConfig.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Geo Tags for Local SEO -->
+<meta name="geo.region" content="US-FL" />
+<meta name="geo.placename" content="Sanford" />
+<meta name="geo.position" content={`${siteConfig.coordinates.latitude};${siteConfig.coordinates.longitude}`} />
+<meta name="ICBM" content={`${siteConfig.coordinates.latitude}, ${siteConfig.coordinates.longitude}`} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<!-- Preconnect to Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

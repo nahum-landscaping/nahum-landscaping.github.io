@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Update sitemap URL once custom domain is configured
+Sitemap: https://nahumjlandscaping.com/sitemap-index.xml

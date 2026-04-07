@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Contact Nahum J Landscaping for a free landscaping estimate in Sanford, FL. Call us or fill out our form. Licensed & insured lawn care and landscaping services."
+>
+  <!-- Page Header -->
+  <section class="bg-green-900 py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+        Get a Free Estimate
+      </h1>
+      <p class="text-green-100 text-xl max-w-3xl mx-auto">
+        Ready to improve your landscape? Contact us today for a free, no-obligation estimate. We serve Sanford, FL and surrounding areas.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-2xl font-bold text-green-900 mb-6">Send Us a Message</h2>
+          <!-- TODO: Replace YOUR_FORM_ID in config.ts with actual Formspree endpoint -->
+          <form action={siteConfig.formspreeEndpoint} method="POST" class="space-y-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                placeholder="(407) 555-0123"
+              />
+            </div>
+            <div>
+              <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Interested In</label>
+              <select
+                id="service"
+                name="service"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors bg-white"
+              >
+                <option value="">Select a service...</option>
+                <option value="Lawn Maintenance">Lawn Maintenance</option>
+                <option value="Landscape Design">Landscape Design</option>
+                <option value="Tree Trimming">Tree Trimming</option>
+                <option value="Irrigation">Irrigation Systems</option>
+                <option value="Mulching">Mulching & Flower Beds</option>
+                <option value="Sod Installation">Sod Installation</option>
+                <option value="Seasonal Cleanup">Seasonal Cleanup</option>
+                <option value="Hardscaping">Hardscaping</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-y"
+                placeholder="Tell us about your project or what you need help with..."
+              ></textarea>
+            </div>
+            <!-- Formspree honeypot for spam protection -->
+            <input type="text" name="_gotcha" class="hidden" />
+            <button
+              type="submit"
+              class="w-full bg-green-700 hover:bg-green-800 text-white px-6 py-4 rounded-lg font-semibold text-lg transition-colors"
+            >
+              Send Message
+            </button>
+            <p class="text-xs text-gray-500 text-center">
+              We typically respond within 24 hours. For urgent requests, please call us directly.
+            </p>
+          </form>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="space-y-8">
+          <!-- Phone -->
+          <div class="bg-sand-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-green-800 mb-4">Prefer to Call?</h3>
+            <a
+              href={siteConfig.phoneHref}
+              class="text-2xl font-bold text-green-700 hover:text-green-800 transition-colors"
+            >
+              {siteConfig.phone}
+            </a>
+            <p class="text-gray-600 text-sm mt-2">Call or text — we're happy to help.</p>
+          </div>
+
+          <!-- Hours -->
+          <div class="bg-sand-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-green-800 mb-4">Business Hours</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex justify-between">
+                <span>Monday - Friday</span>
+                <span class="font-medium text-gray-800">7:00 AM - 6:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Saturday</span>
+                <span class="font-medium text-gray-800">8:00 AM - 4:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sunday</span>
+                <span class="font-medium text-gray-800">Closed</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Email -->
+          <div class="bg-sand-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-green-800 mb-4">Email Us</h3>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              class="text-green-700 hover:text-green-800 font-medium transition-colors"
+            >
+              {siteConfig.email}
+            </a>
+          </div>
+
+          <!-- Service Area -->
+          <div class="bg-sand-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-green-800 mb-4">Service Area</h3>
+            <p class="text-gray-600 text-sm mb-3">We proudly serve:</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>Sanford, FL</li>
+              <li>Lake Mary, FL</li>
+              <li>Longwood, FL</li>
+              <li>Winter Springs, FL</li>
+              <li>Seminole County</li>
+            </ul>
+          </div>
+
+          <!-- Google Business Profile -->
+          <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-green-800 mb-2">Find Us on Google</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Check out our reviews and get directions on Google Maps.
+            </p>
+            <a
+              href={siteConfig.googleBusinessProfile}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-green-700 hover:text-green-800 font-semibold text-sm transition-colors"
+            >
+              View on Google Maps &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

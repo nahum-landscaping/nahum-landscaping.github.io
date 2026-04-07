@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+// TODO: Replace ALL placeholder images with actual project photos
+const projects = [
+  { src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80', alt: 'Lush green lawn with professional edging in Sanford, FL', category: 'Lawn Care' },
+  { src: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80', alt: 'Tropical landscape design with palm trees and flowering plants', category: 'Landscape Design' },
+  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', alt: 'Custom paver patio with outdoor seating area', category: 'Hardscaping' },
+  { src: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=600&q=80', alt: 'Freshly maintained commercial property lawn', category: 'Commercial' },
+  { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80', alt: 'Colorful flower beds with mulch and tropical plants', category: 'Mulching & Beds' },
+  { src: 'https://images.unsplash.com/photo-1598902108854-d1446a05c413?w=600&q=80', alt: 'Professional tree trimming on mature shade tree', category: 'Tree Trimming' },
+  { src: 'https://images.unsplash.com/photo-1505659903052-300a02e5a2c8?w=600&q=80', alt: 'Seasonal yard cleanup with leaf and debris removal', category: 'Seasonal Cleanup' },
+  { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80', alt: 'New sod installation transforming a bare yard into green lawn', category: 'Sod Installation' },
+  { src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80', alt: 'Before and after lawn transformation in Sanford neighborhood', category: 'Lawn Care' },
+];
+---
+
+<BaseLayout
+  title="Gallery"
+  description="See our landscaping work in Sanford, FL — lawn care, landscape design, hardscaping, tree trimming, and more. View our portfolio of completed projects."
+>
+  <!-- Page Header -->
+  <section class="bg-green-900 py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+        Our Work
+      </h1>
+      <p class="text-green-100 text-xl max-w-3xl mx-auto">
+        Browse our portfolio of landscaping projects completed for homes and businesses in Sanford, FL and surrounding areas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-16 sm:py-20" aria-labelledby="gallery-heading">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 id="gallery-heading" class="sr-only">Project Gallery</h2>
+      <!-- TODO: Replace placeholder images with actual before/after project photos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <figure class="group rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+            <div class="relative overflow-hidden">
+              <img
+                src={project.src}
+                alt={project.alt}
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+              <div class="absolute top-3 left-3">
+                <span class="bg-green-800/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  {project.category}
+                </span>
+              </div>
+            </div>
+            <figcaption class="p-4 bg-white">
+              <p class="text-sm text-gray-600">{project.alt}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-500 text-sm mb-4">
+          Want to see more? Follow us on social media for our latest projects.
+        </p>
+        <a
+          href="/contact/"
+          class="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+        >
+          Start Your Project Today
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Love What You See?"
+    text="Let us create something beautiful for your property. Free estimates for all Sanford, FL residents."
+  />
+</BaseLayout>
