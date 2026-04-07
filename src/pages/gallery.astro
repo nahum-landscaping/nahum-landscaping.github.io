@@ -5,39 +5,39 @@ import { PageHeader, Section, Button, Badge } from '../components/ui';
 
 // TODO: Replace ALL placeholder images with actual project photos
 const projects = [
-  { src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80', alt: 'Lush green lawn with professional edging in Sanford, FL', category: 'Lawn Care' },
-  { src: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80', alt: 'Tropical landscape design with palm trees and flowering plants', category: 'Landscape Design' },
-  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', alt: 'Custom paver patio with outdoor seating area', category: 'Hardscaping' },
-  { src: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=600&q=80', alt: 'Freshly maintained commercial property lawn', category: 'Commercial' },
-  { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80', alt: 'Colorful flower beds with mulch and tropical plants', category: 'Mulching & Beds' },
-  { src: 'https://images.unsplash.com/photo-1598902108854-d1446a05c413?w=600&q=80', alt: 'Professional tree trimming on mature shade tree', category: 'Tree Trimming' },
-  { src: 'https://images.unsplash.com/photo-1505659903052-300a02e5a2c8?w=600&q=80', alt: 'Seasonal yard cleanup with leaf and debris removal', category: 'Seasonal Cleanup' },
-  { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80', alt: 'New sod installation transforming a bare yard into green lawn', category: 'Sod Installation' },
-  { src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80', alt: 'Before and after lawn transformation in Sanford neighborhood', category: 'Lawn Care' },
+  { src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80', alt: 'Lush green lawn with clean edging in Sanford, FL', category: 'Lawn Care' },
+  { src: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=600&q=80', alt: 'Freshly mowed residential lawn with striped pattern', category: 'Lawn Care' },
+  { src: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80', alt: 'Tropical landscape design with palms and flowering plants', category: 'Landscaping' },
+  { src: 'https://images.unsplash.com/photo-1560749003-f4b1e17e2dff?w=600&q=80', alt: 'Maintained front yard with green grass and shrubs', category: 'Lawn Care' },
+  { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80', alt: 'Colorful flower beds with fresh mulch and healthy plants', category: 'Landscaping' },
+  { src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80', alt: 'Residential home with well-maintained lawn and landscaping', category: 'Lawn Care' },
+  { src: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=80', alt: 'Backyard with maintained grass and garden areas', category: 'Landscaping' },
+  { src: 'https://images.unsplash.com/photo-1589923188651-268a9765e432?w=600&q=80', alt: 'Garden pathway with trimmed hedges and plantings', category: 'Landscaping' },
+  { src: 'https://images.unsplash.com/photo-1557429287-b2e26467fc2b?w=600&q=80', alt: 'Clean lawn edging along a residential sidewalk', category: 'Lawn Care' },
 ];
 ---
 
 <BaseLayout
   title="Gallery"
-  description="See our landscaping work in Sanford, FL — lawn care, landscape design, hardscaping, tree trimming, and more. View our portfolio of completed projects."
+  description="See our lawn care and landscaping work in Sanford, FL. Browse photos of maintained lawns, landscaping projects, and more."
 >
   <PageHeader
     title="Our Work"
-    subtitle="Browse our portfolio of landscaping projects completed for homes and businesses in Sanford, FL and surrounding areas."
+    subtitle="Photos from jobs around Sanford and Seminole County. All placeholder images until we add real project photos."
   />
 
   <!-- Gallery Grid -->
   <Section aria-labelledby="gallery-heading">
     <h2 id="gallery-heading" class="sr-only">Project Gallery</h2>
     <!-- TODO: Replace placeholder images with actual before/after project photos -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
       {projects.map((project) => (
-        <figure class="group rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+        <figure class="group rounded-xl overflow-hidden shadow-sm card-hover fade-up">
           <div class="relative overflow-hidden">
             <img
               src={project.src}
               alt={project.alt}
-              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
               width="600"
               height="400"
@@ -57,12 +57,12 @@ const projects = [
       <p class="text-gray-500 text-sm mb-4">
         Want to see more? Follow us on social media for our latest projects.
       </p>
-      <Button href="/contact/" size="lg">Start Your Project Today</Button>
+      <Button href="/contact/" size="lg">Get a Free Estimate</Button>
     </div>
   </Section>
 
   <CTABanner
-    heading="Love What You See?"
-    text="Let us create something beautiful for your property. Free estimates for all Sanford, FL residents."
+    heading="Like what you see?"
+    text="Give us a call and we'll come take a look at your property. Free estimates, always."
   />
 </BaseLayout>

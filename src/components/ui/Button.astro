@@ -19,23 +19,22 @@ const {
   ...attrs
 } = Astro.props;
 
-const base = 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors text-center';
+const base = 'inline-flex items-center justify-center font-semibold rounded-lg text-center transition-all duration-200 ease-out';
 
 const variants: Record<string, string> = {
-  primary: 'bg-green-700 hover:bg-green-800 text-white',
-  secondary: 'bg-white text-green-800 hover:bg-green-50',
-  outline: 'border-2 border-white text-white hover:bg-white hover:text-green-900',
-  ghost: 'text-green-700 hover:text-green-800 underline underline-offset-4',
+  primary: 'bg-green-700 text-white hover:bg-green-600 hover:shadow-lg hover:shadow-green-700/20 active:scale-[0.98]',
+  secondary: 'bg-white text-green-800 hover:bg-green-50 hover:shadow-lg active:scale-[0.98]',
+  outline: 'border-2 border-white text-white hover:bg-white/10 active:scale-[0.98]',
+  ghost: 'text-green-700 hover:text-green-600 underline underline-offset-4 decoration-green-700/30 hover:decoration-green-600/60',
 };
 
 const sizes: Record<string, string> = {
   sm: 'px-4 py-2 text-sm',
   md: 'px-6 py-3 text-sm',
-  lg: 'px-8 py-4 text-lg',
+  lg: 'px-8 py-4 text-base',
 };
 
 const classes = [base, variants[variant], sizes[size], fullWidth && 'w-full', className].filter(Boolean).join(' ');
-const Tag = href ? 'a' : 'button';
 ---
 
 {href ? (

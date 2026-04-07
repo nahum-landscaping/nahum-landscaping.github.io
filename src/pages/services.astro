@@ -5,127 +5,71 @@ import { PageHeader, Section, Button, CheckList } from '../components/ui';
 
 const services = [
   {
-    id: 'lawn-maintenance',
-    title: 'Lawn Maintenance & Mowing',
-    description: 'Keep your Sanford lawn looking its best with our comprehensive maintenance packages. We handle mowing, edging, trimming, and blowing — on a weekly or bi-weekly schedule that works for you.',
+    id: 'lawn-care',
+    title: 'Lawn Care & Maintenance',
+    description: 'We handle the regular upkeep so your lawn stays healthy and looks good — week after week. We work with all common Florida grass types including St. Augustine, Bermuda, Zoysia, and Bahia.',
     details: [
-      'Professional mowing with sharp, clean cuts',
-      'Precise edging along sidewalks, driveways, and beds',
-      'String trimming around obstacles and fences',
-      'Complete debris blowing and cleanup',
-      'Florida grass expertise: St. Augustine, Bermuda, Zoysia, Bahia',
+      'Weekly or bi-weekly mowing',
+      'Edging along sidewalks, driveways, and beds',
+      'String trimming around fences and obstacles',
+      'Blowing and cleanup after every visit',
+      'Weed management in lawn areas',
     ],
-    image: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=600&q=80',
-    imageAlt: 'Freshly mowed green lawn with clean edging in Sanford, Florida',
+    image: '/images/daniel-watson-8vBpYpTGo90-unsplash.jpg',
+    imageAlt: 'Freshly mowed and edged residential lawn in Sanford, Florida',
   },
   {
-    id: 'landscape-design',
-    title: 'Landscape Design & Installation',
-    description: 'Transform your outdoor space with a custom landscape design tailored to Florida\'s climate. From tropical paradise to low-maintenance native plantings, we bring your vision to life.',
+    id: 'landscaping',
+    title: 'Landscaping & Design',
+    description: 'From new plantings to full bed renovations, we design and install landscapes that work for Central Florida\'s climate. We focus on plants that actually thrive here — not just what looks good at the nursery.',
     details: [
-      'Custom design consultations',
+      'Custom planting layouts for your property',
       'Florida-native and tropical plant selection',
-      'Drought-tolerant and low-water designs',
+      'Flower bed installation and renovation',
+      'Shrub and hedge planting',
       'Seasonal color rotations',
-      'Full installation from plants to irrigation',
     ],
-    image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80',
-    imageAlt: 'Beautiful tropical landscape design with palm trees and colorful flowers',
-  },
-  {
-    id: 'tree-trimming',
-    title: 'Tree Trimming & Pruning',
-    description: 'Professional tree care to keep your property safe and beautiful. Proper trimming promotes healthy growth and is essential for hurricane preparedness in Central Florida.',
-    details: [
-      'Crown thinning and shaping',
-      'Dead branch removal',
-      'Hurricane preparation trimming',
-      'Palm tree trimming and maintenance',
-      'Stump grinding available',
-    ],
-    image: 'https://images.unsplash.com/photo-1598902108854-d1446a05c413?w=600&q=80',
-    imageAlt: 'Professional tree trimming service on mature oak tree',
-  },
-  {
-    id: 'irrigation',
-    title: 'Irrigation Systems',
-    description: 'Efficient sprinkler systems designed for Florida\'s sandy soil and seasonal water restrictions. We install, repair, and maintain irrigation to keep your landscape healthy while conserving water.',
-    details: [
-      'New sprinkler system design and installation',
-      'Sprinkler head repair and replacement',
-      'System audits and efficiency upgrades',
-      'Rain sensor installation',
-      'Compliance with Sanford water restrictions',
-    ],
-    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80',
-    imageAlt: 'Sprinkler irrigation system watering a green lawn',
+    image: '/images/360_F_724631497_FzznfnmeuP6WIXfM6uuQtPY4fCDL73mr.jpg',
+    imageAlt: 'Tropical landscape with palms and colorful flowering plants',
   },
   {
     id: 'mulching',
-    title: 'Mulching & Flower Beds',
-    description: 'Fresh mulch protects your plants, retains moisture in the Florida heat, and gives your landscape beds a polished, well-maintained appearance.',
+    title: 'Mulching & Bed Maintenance',
+    description: 'Mulch protects your plants, holds moisture in the Florida heat, and keeps beds looking clean. We handle the full job — weed removal, edging, and fresh mulch laid down right.',
     details: [
       'Premium hardwood and pine bark mulch',
       'Bed edging and shaping',
       'Weed removal and prevention',
+      'Soil amendment when needed',
       'Seasonal flower planting',
-      'Bed renovation and soil amendment',
     ],
-    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80',
-    imageAlt: 'Well-mulched landscape bed with tropical flowers',
+    image: '/images/mulching-garden-beds.webp',
+    imageAlt: 'Well-maintained landscape bed with fresh mulch and plants',
   },
   {
-    id: 'sod-installation',
-    title: 'Sod Installation',
-    description: 'Replace bare, patchy, or damaged turf with fresh sod. We use Florida-appropriate grass varieties and prepare the soil properly for a lawn that establishes quickly and lasts.',
+    id: 'hedge-trimming',
+    title: 'Hedge & Shrub Trimming',
+    description: 'Overgrown hedges make a property look neglected fast. We keep shrubs, hedges, and ornamental plants shaped and healthy with regular trimming.',
     details: [
-      'St. Augustine, Bermuda, Zoysia, and Bahia sod',
-      'Proper soil preparation and grading',
-      'Full or partial lawn replacements',
-      'New construction sod installation',
-      'Post-installation care instructions',
+      'Hedge shaping and maintenance',
+      'Ornamental shrub pruning',
+      'Overgrowth cleanup and restoration',
+      'Post-storm cleanup and trimming',
+      'Palm frond removal',
     ],
-    image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80',
-    imageAlt: 'Fresh sod being installed on prepared ground for new lawn',
-  },
-  {
-    id: 'seasonal-cleanup',
-    title: 'Seasonal Cleanup',
-    description: 'Keep your property clean and well-maintained through every Florida season. From leaf removal to post-hurricane cleanup, we handle the heavy lifting.',
-    details: [
-      'Spring and fall property cleanups',
-      'Leaf and debris removal',
-      'Post-storm and hurricane cleanup',
-      'Gutter cleaning',
-      'Property preparation for HOA inspections',
-    ],
-    image: 'https://images.unsplash.com/photo-1505659903052-300a02e5a2c8?w=600&q=80',
-    imageAlt: 'Yard cleanup with professional leaf removal and debris clearing',
-  },
-  {
-    id: 'hardscaping',
-    title: 'Hardscaping',
-    description: 'Add structure and functionality to your outdoor space with custom hardscaping. Patios, walkways, retaining walls, and more — built to withstand Florida\'s weather.',
-    details: [
-      'Paver patios and walkways',
-      'Retaining walls',
-      'Outdoor kitchens and fire pits',
-      'Driveway borders and edging',
-      'Drainage solutions',
-    ],
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80',
-    imageAlt: 'Beautiful paver patio and walkway with landscaping',
+    image: '/images/Shearing-Plants-In-The-Garden-1000x667.jpg',
+    imageAlt: 'Neatly trimmed hedges and maintained shrubs along a walkway',
   },
 ];
 ---
 
 <BaseLayout
-  title="Landscaping Services"
-  description="Professional landscaping services in Sanford, FL — lawn maintenance, landscape design, tree trimming, irrigation, mulching, sod installation, seasonal cleanup, and hardscaping. Free estimates."
+  title="Services"
+  description="Lawn care and landscaping services in Sanford, FL — mowing, edging, landscaping, mulching, and hedge trimming. Free estimates from a locally owned business."
 >
   <PageHeader
-    title="Landscaping Services in Sanford, FL"
-    subtitle="Comprehensive lawn care and landscaping solutions for residential and commercial properties in Sanford and surrounding areas."
+    title="Our Services"
+    subtitle="Lawn care and landscaping for residential properties in Sanford, FL and surrounding areas."
   />
 
   <!-- Services List -->
@@ -160,7 +104,7 @@ const services = [
   </Section>
 
   <CTABanner
-    heading="Need Landscaping Help in Sanford?"
-    text="Contact us today for a free estimate. No job is too big or too small."
+    heading="Want to talk about your yard?"
+    text="Give us a call or send a message. We'll come take a look and let you know what we can do."
   />
 </BaseLayout>

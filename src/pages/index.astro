@@ -1,33 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { siteConfig } from '../config';
 import { Button, Section, SectionHeading, PhoneButton } from '../components/ui';
 
 const services = [
-  { title: 'Lawn Maintenance', description: 'Regular mowing, edging, and trimming to keep your Sanford lawn looking pristine year-round. We know Florida grass — St. Augustine, Bermuda, and Zoysia.', icon: '🌿' },
-  { title: 'Landscape Design', description: 'Custom landscape designs that thrive in Central Florida\'s climate. From tropical plantings to drought-tolerant gardens, we create outdoor spaces you\'ll love.', icon: '🎨' },
-  { title: 'Tree Trimming', description: 'Professional tree trimming and pruning services. Keep your trees healthy, safe, and beautifully shaped — especially important before hurricane season.', icon: '🌳' },
-  { title: 'Irrigation Systems', description: 'Sprinkler installation, repair, and maintenance. Efficient irrigation designed for Florida\'s sandy soil and water restrictions.', icon: '💧' },
-  { title: 'Mulching & Beds', description: 'Fresh mulch installation and flower bed maintenance to protect your plants and enhance curb appeal in the Sanford heat.', icon: '🌺' },
-  { title: 'Sod Installation', description: 'Expert sod installation with Florida-appropriate grass varieties. Transform bare or damaged areas into lush, green lawns.', icon: '🏡' },
-  { title: 'Seasonal Cleanup', description: 'Spring and fall cleanups, leaf removal, and post-storm debris clearing. We keep your property looking its best through every Florida season.', icon: '🍂' },
-  { title: 'Hardscaping', description: 'Patios, walkways, retaining walls, and outdoor living spaces. Durable hardscape solutions designed for Florida\'s climate.', icon: '🧱' },
-];
-
-// TODO: Replace with real customer testimonials
-const testimonials = [
-  { quote: 'Nahum and his team transformed our backyard from a patchy mess into the best-looking yard on the block. They really know Florida landscaping. Highly recommend!', name: 'Maria R.', location: 'Sanford, FL' },
-  { quote: 'We\'ve been using Nahum J Landscaping for our weekly lawn maintenance for over a year. Always on time, always professional. Our St. Augustine grass has never looked better.', name: 'James T.', location: 'Sanford, FL' },
-  { quote: 'After the last hurricane season, they came out quickly to clean up our property and trim damaged trees. Fair pricing and excellent work. They\'re our go-to landscaper now.', name: 'Patricia W.', location: 'Lake Mary, FL' },
+  { title: 'Weekly Lawn Mowing', description: 'Consistent mowing, edging, and trimming on a schedule that works for you. We know St. Augustine, Bermuda, and Zoysia.', icon: '🌿' },
+  { title: 'Edging & Trimming', description: 'Clean edges along sidewalks, driveways, and flower beds. The details that make a yard look finished.', icon: '✂️' },
+  { title: 'Landscape Design', description: 'Plantings, flower beds, and shrub layouts designed for Central Florida\'s climate and your property.', icon: '🌺' },
+  { title: 'Mulching & Bed Care', description: 'Fresh mulch, weed removal, and bed maintenance to keep your landscape healthy and looking sharp.', icon: '🪴' },
 ];
 ---
 
 <BaseLayout
   title="Home"
-  description="Nahum J Landscaping LLC provides professional landscaping, lawn care, and yard maintenance services in Sanford, FL. Licensed & insured. Free estimates. Call today!"
+  description="Nahum J Landscaping LLC — lawn care and landscaping for homes in Sanford, FL. Locally owned, licensed & insured. Free estimates."
 >
   <!-- Hero Section -->
   <section class="relative bg-green-900 overflow-hidden">
@@ -35,14 +23,14 @@ const testimonials = [
     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1920&q=80')] bg-cover bg-center opacity-30"></div>
     <div class="relative max-w-7xl mx-auto px-4 py-20 sm:py-28 lg:py-36">
       <div class="max-w-2xl">
-        <p class="text-green-300 font-semibold text-sm uppercase tracking-wide mb-3">Serving Sanford, FL & Surrounding Areas</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-          Professional Landscaping You Can Trust
+        <p class="hero-enter text-green-300 font-semibold text-sm uppercase tracking-wide mb-3">Sanford, FL & Surrounding Areas</p>
+        <h1 class="hero-enter-delay text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          Lawn Care & Landscaping Done Right
         </h1>
-        <p class="text-xl text-green-100 mb-8 leading-relaxed">
-          From lawn maintenance to complete landscape transformations — Nahum J Landscaping delivers quality results for homes and businesses in Sanford, Florida.
+        <p class="hero-enter-delay-2 text-xl text-green-100 mb-8 leading-relaxed">
+          Locally owned and hands-on. We keep yards looking great across Sanford and Seminole County — weekly mowing, edging, landscaping, and more.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="hero-enter-delay-2 flex flex-col sm:flex-row gap-4">
           <Button href="/contact/" variant="primary" size="lg">Get a Free Estimate</Button>
           <PhoneButton />
         </div>
@@ -51,58 +39,79 @@ const testimonials = [
   </section>
 
   <!-- Trust Signals Bar -->
-  <section class="bg-sand-50 border-y border-sand-200 py-6" aria-label="Trust signals">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div>
-        <p class="text-2xl font-bold text-green-800">Licensed</p>
-        <p class="text-sm text-gray-600">& Insured</p>
-      </div>
-      <div>
-        <p class="text-2xl font-bold text-green-800">Free</p>
-        <p class="text-sm text-gray-600">Estimates</p>
-      </div>
-      <div>
-        <!-- TODO: Replace with actual years in business -->
-        <p class="text-2xl font-bold text-green-800">10+ Years</p>
-        <p class="text-sm text-gray-600">Experience</p>
-      </div>
-      <div>
-        <p class="text-2xl font-bold text-green-800">100%</p>
-        <p class="text-sm text-gray-600">Satisfaction Guarantee</p>
-      </div>
-    </div>
+  <section class="bg-sand-50 border-y border-sand-200 py-8" aria-label="Why choose us">
+    <ul role="list" class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <li class="flex flex-col items-center gap-2">
+        <svg class="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <div>
+          <p class="text-xl font-extrabold text-green-950">Licensed</p>
+          <p class="text-sm text-gray-500">& Insured</p>
+        </div>
+      </li>
+      <li class="flex flex-col items-center gap-2">
+        <svg class="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
+        </svg>
+        <div>
+          <p class="text-xl font-extrabold text-green-950">Free</p>
+          <p class="text-sm text-gray-500">Estimates</p>
+        </div>
+      </li>
+      <li class="flex flex-col items-center gap-2">
+        <svg class="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <div>
+          <p class="text-xl font-extrabold text-green-950">175+</p>
+          <p class="text-sm text-gray-500">Happy Customers</p>
+        </div>
+      </li>
+      <li class="flex flex-col items-center gap-2">
+        <svg class="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <div>
+          <p class="text-xl font-extrabold text-green-950">Locally</p>
+          <p class="text-sm text-gray-500">Owned & Operated</p>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <!-- Services Overview -->
   <Section aria-labelledby="services-heading">
     <SectionHeading
       id="services-heading"
-      title="Landscaping Services in Sanford, FL"
-      subtitle="Comprehensive lawn care and landscaping solutions tailored for Central Florida's unique climate and your property's needs."
+      title="What We Do"
+      subtitle="Lawn care and landscaping for residential properties in Sanford and the surrounding area."
     />
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
       {services.map((service) => (
         <ServiceCard title={service.title} description={service.description} icon={service.icon} />
       ))}
     </div>
     <div class="text-center mt-10">
-      <Button href="/services/" variant="ghost" size="md">View All Services &rarr;</Button>
+      <Button href="/services/" variant="ghost" size="md">See Full Service Details &rarr;</Button>
     </div>
   </Section>
 
   <!-- Why Choose Us -->
   <Section bg="sand" aria-labelledby="why-heading">
-    <div class="grid md:grid-cols-2 gap-10 items-center">
+    <div class="grid md:grid-cols-2 gap-10 items-center fade-up">
       <div>
         <h2 id="why-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-4">
-          Why Sanford Homeowners Choose Nahum J Landscaping
+          Why Homeowners Stick With Us
         </h2>
+        <p class="text-gray-600 mb-6">We're a small operation — and that's by design. You'll always know who's showing up to your property.</p>
         <ul class="space-y-4">
           {[
-            { title: 'Florida Landscaping Experts', text: 'We know Central Florida soil, grass types, and climate challenges inside and out.' },
-            { title: 'Reliable & On Time', text: 'Consistent service you can count on, week after week. We show up when we say we will.' },
-            { title: 'Fair, Transparent Pricing', text: 'No hidden fees, no surprises. Get a detailed estimate before any work begins.' },
-            { title: 'Licensed & Fully Insured', text: 'Your property is protected. We carry full liability insurance and workers\' comp.' },
+            { title: 'We Know Florida Grass', text: 'St. Augustine, Bermuda, Zoysia — we understand what grows here and how to maintain it.' },
+            { title: 'Same Crew, Every Visit', text: 'No rotating strangers. You get the same people who know your yard.' },
+            { title: 'Fair, Upfront Pricing', text: 'We quote before we start. No surprise charges, no upselling.' },
+            { title: 'Licensed & Insured', text: 'Full liability coverage and workers\' comp. Your property is protected.' },
           ].map((item) => (
             <li class="flex items-start gap-3">
               <svg class="h-6 w-6 text-green-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -114,11 +123,11 @@ const testimonials = [
           ))}
         </ul>
       </div>
-      <!-- TODO: Replace with actual team/project photo -->
+      <!-- TODO: Replace with actual project photo -->
       <div class="rounded-xl overflow-hidden shadow-lg">
         <img
-          src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=800&q=80"
-          alt="Professional landscaping team working on a manicured lawn in Sanford, Florida"
+          src="/images/Grass-Cutting-Lawrenceville-GA.jpg"
+          alt="Well-maintained residential lawn in Sanford, Florida"
           class="w-full h-80 object-cover"
           loading="lazy"
           width="800"
@@ -128,23 +137,22 @@ const testimonials = [
     </div>
   </Section>
 
-  <!-- Testimonials -->
-  <Section aria-labelledby="testimonials-heading">
-    <SectionHeading
-      id="testimonials-heading"
-      title="What Our Customers Say"
-      subtitle="Don't just take our word for it — hear from homeowners in Sanford, FL."
-    />
-    <!-- TODO: Replace placeholder testimonials with real customer reviews -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {testimonials.map((t) => (
-        <TestimonialCard quote={t.quote} name={t.name} location={t.location} />
-      ))}
-    </div>
-    <div class="text-center mt-10">
-      <Button href={siteConfig.googleBusinessProfile} variant="ghost" target="_blank" rel="noopener noreferrer">
-        See more reviews on Google &rarr;
-      </Button>
+  <!-- Referral / Social Proof -->
+  <Section aria-labelledby="referral-heading">
+    <div class="max-w-3xl mx-auto text-center fade-up">
+      <h2 id="referral-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-4">
+        Most of Our Work Comes From Referrals
+      </h2>
+      <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+        We currently maintain over 175 residential yards in Sanford and the surrounding area. Most of our new customers come from neighbors and word of mouth — and we'd like to keep it that way.
+      </p>
+      <p class="text-gray-600 mb-8">
+        Know someone who needs lawn care? We appreciate every referral.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact/" size="lg">Get a Free Estimate</Button>
+        <PhoneButton />
+      </div>
     </div>
   </Section>
 
