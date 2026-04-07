@@ -16,7 +16,7 @@ export const siteConfig = {
     state: 'FL',
     zip: '32771',
   },
-  serviceArea: 'Sanford, FL and surrounding areas',
+  serviceArea: 'Sanford, FL',
   // TODO: Replace with actual Formspree endpoint
   formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID',
   // TODO: Replace with actual social media URLs
@@ -33,12 +33,11 @@ export const siteConfig = {
   },
   // TODO: Replace with actual business hours
   hours: {
-    weekdays: 'Mon-Fri: 7:00 AM - 6:00 PM',
-    saturday: 'Sat: 8:00 AM - 4:00 PM',
-    sunday: 'Sun: Closed',
+    weekdays: 'Mon-Sun: 7:00 AM - 6:00 PM',
+    saturday: '',
+    sunday: '',
   },
   hoursStructured: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '18:00' },
-    { days: ['Saturday'], opens: '08:00', closes: '16:00' },
+    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '07:00', closes: '18:00' },
   ],
 } as const;

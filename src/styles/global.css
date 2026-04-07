@@ -30,8 +30,8 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Ensure good tap targets on mobile */
-a, button {
+/* Ensure good tap targets on mobile — buttons and standalone links only */
+.btn, button, a[href^="tel"], a[href^="mailto"] {
   min-height: 44px;
   min-width: 44px;
 }
@@ -50,11 +50,11 @@ a, button {
 
 /* Staggered children — each child delays slightly */
 .stagger-children > .fade-up:nth-child(1) { transition-delay: 0ms; }
-.stagger-children > .fade-up:nth-child(2) { transition-delay: 80ms; }
-.stagger-children > .fade-up:nth-child(3) { transition-delay: 160ms; }
-.stagger-children > .fade-up:nth-child(4) { transition-delay: 240ms; }
-.stagger-children > .fade-up:nth-child(5) { transition-delay: 320ms; }
-.stagger-children > .fade-up:nth-child(6) { transition-delay: 400ms; }
+.stagger-children > .fade-up:nth-child(2) { transition-delay: 150ms; }
+.stagger-children > .fade-up:nth-child(3) { transition-delay: 300ms; }
+.stagger-children > .fade-up:nth-child(4) { transition-delay: 450ms; }
+.stagger-children > .fade-up:nth-child(5) { transition-delay: 600ms; }
+.stagger-children > .fade-up:nth-child(6) { transition-delay: 750ms; }
 
 /* Hero text entrance */
 .hero-enter {
@@ -80,6 +80,29 @@ a, button {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ─── Nav link animated underline ─── */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #16a34a;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link--active::after {
+  transform: scaleX(1);
 }
 
 /* ─── Card hover lift ─── */

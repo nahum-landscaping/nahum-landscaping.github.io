@@ -6,29 +6,49 @@ import { siteConfig } from '../config';
 import { Button, Section, SectionHeading, PhoneButton } from '../components/ui';
 
 const services = [
-  { title: 'Weekly Lawn Mowing', description: 'Consistent mowing, edging, and trimming on a schedule that works for you. We know St. Augustine, Bermuda, and Zoysia.', icon: '🌿' },
-  { title: 'Edging & Trimming', description: 'Clean edges along sidewalks, driveways, and flower beds. The details that make a yard look finished.', icon: '✂️' },
-  { title: 'Landscape Design', description: 'Plantings, flower beds, and shrub layouts designed for Central Florida\'s climate and your property.', icon: '🌺' },
-  { title: 'Mulching & Bed Care', description: 'Fresh mulch, weed removal, and bed maintenance to keep your landscape healthy and looking sharp.', icon: '🪴' },
+  {
+    title: 'Weekly Lawn Mowing',
+    description: 'Consistent mowing, edging, and trimming on a schedule that works for you. We know St. Augustine, Bermuda, and Zoysia.',
+    icon: '<svg class="w-5 h-5 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" /></svg>',
+    href: '/services/#lawn-care',
+  },
+  {
+    title: 'Edging & Trimming',
+    description: 'Clean edges along sidewalks, driveways, and flower beds. The details that make a yard look finished.',
+    icon: '<svg class="w-5 h-5 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" /></svg>',
+    href: '/services/#lawn-care',
+  },
+  {
+    title: 'Landscape Design',
+    description: 'Custom planting layouts, flower beds, and shrub arrangements designed to thrive in Central Florida\'s climate.',
+    icon: '<svg class="w-5 h-5 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>',
+    href: '/services/#landscaping',
+  },
+  {
+    title: 'Mulching & Bed Care',
+    description: 'Fresh mulch, weed removal, and bed maintenance to keep your landscape healthy and looking sharp.',
+    icon: '<svg class="w-5 h-5 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>',
+    href: '/services/#mulching',
+  },
 ];
 ---
 
 <BaseLayout
   title="Home"
-  description="Nahum J Landscaping LLC — lawn care and landscaping for homes in Sanford, FL. Locally owned, licensed & insured. Free estimates."
+  description="Nahum J Landscaping LLC. Lawn care and landscaping for homes in Sanford, FL. Locally owned, licensed & insured. Free estimates."
 >
   <!-- Hero Section -->
-  <section class="relative bg-green-900 overflow-hidden">
+  <section class="relative bg-green-900 overflow-hidden" style="height: calc(100svh - var(--header-height, 100px))">
     <!-- TODO: Replace with actual hero image of completed landscaping project -->
     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1920&q=80')] bg-cover bg-center opacity-30"></div>
-    <div class="relative max-w-7xl mx-auto px-4 py-20 sm:py-28 lg:py-36">
+    <div class="relative max-w-7xl mx-auto px-4 h-full flex items-center">
       <div class="max-w-2xl">
-        <p class="hero-enter text-green-300 font-semibold text-sm uppercase tracking-wide mb-3">Sanford, FL & Surrounding Areas</p>
+        <p class="hero-enter text-green-300 font-semibold text-sm uppercase tracking-wide mb-3">Proudly Serving Sanford, FL</p>
         <h1 class="hero-enter-delay text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
           Lawn Care & Landscaping Done Right
         </h1>
         <p class="hero-enter-delay-2 text-xl text-green-100 mb-8 leading-relaxed">
-          Locally owned and hands-on. We keep yards looking great across Sanford and Seminole County — weekly mowing, edging, landscaping, and more.
+          Locally owned and hands-on. We keep yards looking great across Sanford and Seminole County with weekly mowing, edging, landscaping, and more.
         </p>
         <div class="hero-enter-delay-2 flex flex-col sm:flex-row gap-4">
           <Button href="/contact/" variant="primary" size="lg">Get a Free Estimate</Button>
@@ -82,19 +102,19 @@ const services = [
   </section>
 
   <!-- Services Overview -->
-  <Section aria-labelledby="services-heading">
+  <Section aria-labelledby="services-heading" class="!py-8 sm:!py-12">
     <SectionHeading
       id="services-heading"
       title="What We Do"
       subtitle="Lawn care and landscaping for residential properties in Sanford and the surrounding area."
     />
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch fade-up">
       {services.map((service) => (
-        <ServiceCard title={service.title} description={service.description} icon={service.icon} />
+        <ServiceCard title={service.title} description={service.description} icon={service.icon} href={service.href} />
       ))}
     </div>
-    <div class="text-center mt-10">
-      <Button href="/services/" variant="ghost" size="md">See Full Service Details &rarr;</Button>
+    <div class="text-center mt-8 fade-up">
+      <Button href="/services/" variant="primary" size="md">See Full Service Details &rarr;</Button>
     </div>
   </Section>
 
@@ -103,15 +123,15 @@ const services = [
     <div class="grid md:grid-cols-2 gap-10 items-center fade-up">
       <div>
         <h2 id="why-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-4">
-          Why Homeowners Stick With Us
+          Why Our Customers Stay With Us
         </h2>
-        <p class="text-gray-600 mb-6">We're a small operation — and that's by design. You'll always know who's showing up to your property.</p>
+        <p class="text-gray-600 mb-6">We're a family operation, and that's by design. When we show up to your property, you'll always see a familiar face.</p>
         <ul class="space-y-4">
           {[
-            { title: 'We Know Florida Grass', text: 'St. Augustine, Bermuda, Zoysia — we understand what grows here and how to maintain it.' },
-            { title: 'Same Crew, Every Visit', text: 'No rotating strangers. You get the same people who know your yard.' },
-            { title: 'Fair, Upfront Pricing', text: 'We quote before we start. No surprise charges, no upselling.' },
-            { title: 'Licensed & Insured', text: 'Full liability coverage and workers\' comp. Your property is protected.' },
+            { title: 'We Know Florida Grass', text: 'St. Augustine, Bermuda, Zoysia. We grew up with these grasses and know exactly what they need in our climate.' },
+            { title: 'Same Crew, Every Visit', text: 'No strangers showing up at your door. Our team gets to know your yard and what matters to you.' },
+            { title: 'Fair, Upfront Pricing', text: 'We\'ll walk the property with you and give you an honest quote before any work begins. No surprises.' },
+            { title: 'Licensed & Insured', text: 'Full liability coverage and workers\' comp. We take that seriously so you don\'t have to worry about it.' },
           ].map((item) => (
             <li class="flex items-start gap-3">
               <svg class="h-6 w-6 text-green-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -137,25 +157,9 @@ const services = [
     </div>
   </Section>
 
-  <!-- Referral / Social Proof -->
-  <Section aria-labelledby="referral-heading">
-    <div class="max-w-3xl mx-auto text-center fade-up">
-      <h2 id="referral-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-4">
-        Most of Our Work Comes From Referrals
-      </h2>
-      <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-        We currently maintain over 175 residential yards in Sanford and the surrounding area. Most of our new customers come from neighbors and word of mouth — and we'd like to keep it that way.
-      </p>
-      <p class="text-gray-600 mb-8">
-        Know someone who needs lawn care? We appreciate every referral.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button href="/contact/" size="lg">Get a Free Estimate</Button>
-        <PhoneButton />
-      </div>
-    </div>
-  </Section>
-
   <!-- CTA Banner -->
-  <CTABanner />
+  <CTABanner
+    heading="Ready to Love Your Yard?"
+    text="Most of our new customers come from neighbors and word of mouth. We'll come take a look and give you an honest estimate, no pressure, no commitment."
+  />
 </BaseLayout>

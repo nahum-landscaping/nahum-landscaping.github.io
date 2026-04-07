@@ -52,8 +52,8 @@ import { siteConfig } from '../config';
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           <div>
             <p>{siteConfig.hours.weekdays}</p>
-            <p>{siteConfig.hours.saturday}</p>
-            <p>{siteConfig.hours.sunday}</p>
+            {siteConfig.hours.saturday && <p>{siteConfig.hours.saturday}</p>}
+            {siteConfig.hours.sunday && <p>{siteConfig.hours.sunday}</p>}
           </div>
         </li>
       </ul>
@@ -63,7 +63,7 @@ import { siteConfig } from '../config';
   <div class="border-t border-green-800 py-6">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-green-300">
       <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-      <p>Serving {siteConfig.serviceArea}</p>
+      <p>Proudly Serving {siteConfig.serviceArea}</p>
     </div>
   </div>
 </footer>

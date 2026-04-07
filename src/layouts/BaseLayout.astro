@@ -42,7 +42,10 @@ const { title, description, ogImage, type, noindex } = Astro.props;
         },
         { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
       );
-      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+      // Delay observer start so opacity:0 paints first, then transition plays
+      setTimeout(() => {
+        document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+      }, 300);
     </script>
   </body>
 </html>

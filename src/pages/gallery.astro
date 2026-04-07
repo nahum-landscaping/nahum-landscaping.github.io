@@ -30,9 +30,9 @@ const projects = [
   <Section aria-labelledby="gallery-heading">
     <h2 id="gallery-heading" class="sr-only">Project Gallery</h2>
     <!-- TODO: Replace placeholder images with actual before/after project photos -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-up">
       {projects.map((project) => (
-        <figure class="group rounded-xl overflow-hidden shadow-sm card-hover fade-up">
+        <figure class="group rounded-xl overflow-hidden shadow-sm card-hover">
           <div class="relative overflow-hidden">
             <img
               src={project.src}
