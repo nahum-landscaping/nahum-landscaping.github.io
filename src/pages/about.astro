@@ -16,9 +16,9 @@ import { PageHeader, Section, PhoneButton } from '../components/ui';
 
   <!-- Owner Story -->
   <Section aria-labelledby="story-heading">
-    <div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 items-center fade-up">
-      <!-- TODO: Replace with actual photo of Nahum/crew — use a real owner or team photo here -->
-      <div class="rounded-xl overflow-hidden shadow-lg">
+    <div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-6 md:gap-10 items-center fade-up">
+      <!-- TODO: Replace with actual photo of Nahum/crew -->
+      <div class="rounded-xl overflow-hidden shadow-lg mt-6 md:mt-0">
         <img
           src="/images/mulching-garden-beds.webp"
           alt="Residential home with a well-maintained yard in Sanford, Florida"
@@ -29,7 +29,7 @@ import { PageHeader, Section, PhoneButton } from '../components/ui';
         />
       </div>
       <div>
-        <h2 id="story-heading" class="text-3xl font-bold text-green-900 mb-4">Who We Are</h2>
+        <h2 id="story-heading" class="text-3xl font-bold text-green-900 mb-3">Who We Are</h2>
         <!-- TODO: Replace with actual company story from Nahum -->
         <div class="space-y-4 text-gray-600 leading-relaxed">
           <p>
@@ -55,7 +55,7 @@ import { PageHeader, Section, PhoneButton } from '../components/ui';
   <!-- What We're About -->
   <Section bg="sand" aria-labelledby="about-heading">
     <div class="max-w-3xl mx-auto fade-up">
-      <h2 id="about-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-6 md:text-center">What We're About</h2>
+      <h2 id="about-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-3 md:text-center">What We're About</h2>
       <!-- TODO: Replace with actual personal story from Nahum -->
       <div class="space-y-4 text-gray-600 leading-relaxed md:text-center">
         <p>
@@ -71,19 +71,6 @@ import { PageHeader, Section, PhoneButton } from '../components/ui';
           at a time.
         </p>
       </div>
-    </div>
-  </Section>
-
-  <!-- Service Area -->
-  <Section aria-labelledby="area-heading">
-    <div class="mx-auto md:text-center fade-up" style="max-width:343px">
-      <h2 id="area-heading" class="text-3xl font-bold text-green-900 mb-4">
-        Proudly Serving Sanford, FL
-      </h2>
-      <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-        We serve residential properties in Sanford, FL. If you're in the area, give us a call.
-      </p>
-      <PhoneButton variant="ghost" />
     </div>
   </Section>
 

@@ -75,27 +75,25 @@ const services = [
 
   <!-- Services List -->
   <Section>
-    <div class="space-y-10">
+    <div class="divide-y divide-gray-200 md:divide-y-0 md:space-y-12">
       {services.map((service, i) => (
-        <article id={service.id} class="scroll-mt-24 fade-up">
-          <div class:list={['flex flex-col-reverse md:grid md:grid-cols-2 gap-6 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
+        <article id={service.id} class="scroll-mt-24 fade-up py-10 first:pt-0 md:py-0">
+          <div class:list={['flex flex-col-reverse md:grid md:grid-cols-2 gap-6 md:gap-8 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
             <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
               <!-- TODO: Replace stock images with actual project photos -->
               <img
                 src={service.image}
                 alt={service.imageAlt}
-                class="shadow-md w-full max-h-[250px] md:max-h-none md:h-80 object-cover"
+                class="shadow-md w-full max-h-[250px] md:max-h-none md:h-80 object-cover mt-6 md:mt-0"
                 loading="lazy"
                 width="600"
                 height="400"
               />
             </div>
             <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
-              <h2 class="text-2xl sm:text-3xl font-bold text-green-900 mb-4">{service.title}</h2>
-              <p class="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-              <div>
-                <CheckList items={service.details} />
-              </div>
+              <h2 class="text-2xl sm:text-3xl font-bold text-green-900 mb-3">{service.title}</h2>
+              <p class="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+              <CheckList items={service.details} />
             </div>
           </div>
         </article>
@@ -106,8 +104,8 @@ const services = [
   <!-- FAQ Section -->
   <Section bg="sand" aria-labelledby="faq-heading">
     <div class="max-w-3xl mx-auto fade-up">
-      <h2 id="faq-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 md:text-center">Frequently Asked Questions</h2>
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm divide-y divide-gray-100">
+      <h2 id="faq-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">Frequently Asked Questions</h2>
+      <div>
         {[
           { q: 'How much does lawn care cost in Sanford?', a: 'It depends on the size of your yard and what you need done. Most of our weekly mowing customers pay between $20 and $40 per visit. We\'ll give you an exact quote after seeing your property.' },
           { q: 'How often should I mow my lawn in Florida?', a: 'During the growing season (spring through fall), most Florida lawns need mowing once a week. In winter, every two weeks is usually enough. We\'ll adjust the schedule based on how your grass is growing.' },
@@ -116,13 +114,13 @@ const services = [
           { q: 'Are you licensed and insured?', a: 'Yes. We carry full liability insurance and workers\' compensation coverage. We\'re happy to provide proof of insurance if needed.' },
           { q: 'How do I get a free estimate?', a: 'Call or text us, or fill out the form on our contact page. We\'ll come out to your property, walk it with you, and give you an honest price on the spot.' },
         ].map((faq) => (
-          <div class="faq-item">
-            <button type="button" class="faq-trigger flex items-center justify-between w-full cursor-pointer px-5 py-4 text-green-900 font-semibold text-sm sm:text-base text-left" aria-expanded="false">
+          <div class="faq-item border-b border-gray-200">
+            <button type="button" class="faq-trigger flex items-center justify-between w-full cursor-pointer py-5 text-green-900 font-semibold text-sm sm:text-base text-left" aria-expanded="false">
               {faq.q}
               <svg class="faq-chevron w-5 h-5 text-green-600 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
             </button>
             <div class="faq-content">
-              <div class="px-5 pb-4 text-gray-600 text-sm leading-relaxed">{faq.a}</div>
+              <div class="pb-5 text-gray-600 text-sm leading-relaxed">{faq.a}</div>
             </div>
           </div>
         ))}

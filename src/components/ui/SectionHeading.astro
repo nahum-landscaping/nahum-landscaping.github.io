@@ -9,8 +9,8 @@ interface Props {
 const { id, title, subtitle, align = 'center' } = Astro.props;
 ---
 
-<div class:list={['mb-10 fade-up', align === 'center' && 'md:text-center']}>
-  <h2 id={id} class="text-3xl sm:text-4xl font-bold text-green-900 mb-4">
+<div class:list={['mb-8 fade-up', align === 'center' && 'md:text-center']}>
+  <h2 id={id} class="text-3xl sm:text-4xl font-bold text-green-900 mb-3">
     {title}
   </h2>
   {subtitle && (
