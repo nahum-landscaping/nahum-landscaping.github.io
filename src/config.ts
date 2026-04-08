@@ -4,11 +4,9 @@
 export const siteConfig = {
   name: 'Nahum J Landscaping LLC',
   tagline: 'Professional Landscaping Services in Sanford, FL',
-  // TODO: Replace with actual phone number
-  phone: '(407) 555-0123',
-  phoneHref: 'tel:+14075550123',
-  // TODO: Replace with actual email
-  email: 'info@nahumjlandscaping.com',
+  phone: '(786) 614-2874',
+  phoneHref: 'tel:+17866142874',
+  email: 'nahumjrivera@gmail.com',
   // TODO: Replace with actual address
   address: {
     street: '123 Main Street',

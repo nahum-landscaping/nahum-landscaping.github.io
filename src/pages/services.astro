@@ -70,6 +70,7 @@ const services = [
   <PageHeader
     title="Our Services"
     subtitle="Lawn care and landscaping for residential properties in Sanford, FL."
+    bgImage="/images/daniel-watson-8vBpYpTGo90-unsplash.jpg"
   />
 
   <!-- Services List -->
@@ -77,13 +78,13 @@ const services = [
     <div class="space-y-10">
       {services.map((service, i) => (
         <article id={service.id} class="scroll-mt-24 fade-up">
-          <div class:list={['grid md:grid-cols-2 gap-6 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
+          <div class:list={['flex flex-col-reverse md:grid md:grid-cols-2 gap-6 items-center', i % 2 === 1 && 'md:[direction:rtl]']}>
             <div class={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
               <!-- TODO: Replace stock images with actual project photos -->
               <img
                 src={service.image}
                 alt={service.imageAlt}
-                class="rounded-xl shadow-md w-full h-64 sm:h-80 object-cover"
+                class="shadow-md w-full max-h-[250px] md:max-h-none md:h-80 object-cover"
                 loading="lazy"
                 width="600"
                 height="400"
@@ -108,22 +109,22 @@ const services = [
       <h2 id="faq-heading" class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">Frequently Asked Questions</h2>
       <div class="space-y-4">
         {[
-          { q: 'How much does lawn care cost in Sanford?', a: 'It depends on the size of your yard and what you need done. Most of our weekly mowing customers pay between $30 and $60 per visit. We\'ll give you an exact quote after seeing your property.' },
+          { q: 'How much does lawn care cost in Sanford?', a: 'It depends on the size of your yard and what you need done. Most of our weekly mowing customers pay between $20 and $40 per visit. We\'ll give you an exact quote after seeing your property.' },
           { q: 'How often should I mow my lawn in Florida?', a: 'During the growing season (spring through fall), most Florida lawns need mowing once a week. In winter, every two weeks is usually enough. We\'ll adjust the schedule based on how your grass is growing.' },
           { q: 'Do you offer one-time cleanups?', a: 'Yes. If you need a one-time cleanup, bed renovation, or your yard just needs to get back in shape, we can help. Just reach out and we\'ll come take a look.' },
           { q: 'What areas do you serve?', a: 'We currently serve residential properties in Sanford, FL.' },
           { q: 'Are you licensed and insured?', a: 'Yes. We carry full liability insurance and workers\' compensation coverage. We\'re happy to provide proof of insurance if needed.' },
           { q: 'How do I get a free estimate?', a: 'Call or text us, or fill out the form on our contact page. We\'ll come out to your property, walk it with you, and give you an honest price on the spot.' },
         ].map((faq, i) => (
-          <details name="faq" class="group bg-white rounded-xl border border-gray-100 shadow-sm">
-            <summary class="flex items-center justify-between cursor-pointer p-5 text-green-900 font-semibold text-sm sm:text-base">
+          <div class="faq-item bg-white rounded-xl border border-gray-100 shadow-sm">
+            <button type="button" class="faq-trigger flex items-center justify-between w-full cursor-pointer p-5 text-green-900 font-semibold text-sm sm:text-base text-left" aria-expanded="false">
               {faq.q}
-              <svg class="w-5 h-5 text-green-600 shrink-0 ml-4 transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
-              {faq.a}
+              <svg class="faq-chevron w-5 h-5 text-green-600 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="faq-content">
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.a}</div>
             </div>
-          </details>
+          </div>
         ))}
       </div>
     </div>
@@ -134,7 +135,7 @@ const services = [
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How much does lawn care cost in Sanford?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the size of your yard and what you need done. Most of our weekly mowing customers pay between $30 and $60 per visit. We'll give you an exact quote after seeing your property." }},
+      { "@type": "Question", "name": "How much does lawn care cost in Sanford?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the size of your yard and what you need done. Most of our weekly mowing customers pay between $20 and $40 per visit. We'll give you an exact quote after seeing your property." }},
       { "@type": "Question", "name": "How often should I mow my lawn in Florida?", "acceptedAnswer": { "@type": "Answer", "text": "During the growing season (spring through fall), most Florida lawns need mowing once a week. In winter, every two weeks is usually enough." }},
       { "@type": "Question", "name": "Do you offer one-time cleanups?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you need a one-time cleanup, bed renovation, or your yard just needs to get back in shape, we can help." }},
       { "@type": "Question", "name": "What areas do you serve?", "acceptedAnswer": { "@type": "Answer", "text": "We currently serve residential properties in Sanford, FL." }},
@@ -148,3 +149,47 @@ const services = [
     text="Give us a call or send a message. We'll come take a look and let you know what we can do."
   />
 </BaseLayout>
+
+<script>
+  const allFaqs = document.querySelectorAll('.faq-item');
+
+  function closeItem(item: Element) {
+    const content = item.querySelector('.faq-content') as HTMLElement;
+    const trigger = item.querySelector('.faq-trigger') as HTMLElement;
+    content.style.height = content.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      content.style.height = '0';
+      content.style.opacity = '0';
+    });
+    item.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function openItem(item: Element) {
+    const content = item.querySelector('.faq-content') as HTMLElement;
+    const inner = content.firstElementChild as HTMLElement;
+    const trigger = item.querySelector('.faq-trigger') as HTMLElement;
+    const h = inner.offsetHeight;
+    content.style.height = '0';
+    content.style.opacity = '0';
+    item.classList.add('is-open');
+    trigger.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(() => {
+      content.style.height = h + 'px';
+      content.style.opacity = '1';
+    });
+    setTimeout(() => { content.style.height = 'auto'; }, 250);
+  }
+
+  allFaqs.forEach((item) => {
+    item.querySelector('.faq-trigger')!.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      // Close all others
+      allFaqs.forEach((other) => {
+        if (other !== item && other.classList.contains('is-open')) closeItem(other);
+      });
+      // Toggle this one
+      if (isOpen) { closeItem(item); } else { openItem(item); }
+    });
+  });
+</script>

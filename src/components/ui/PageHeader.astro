@@ -2,17 +2,20 @@
 interface Props {
   title: string;
   subtitle: string;
+  bgImage?: string;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, bgImage = '/images/hero-lawn.jpg' } = Astro.props;
 ---
 
-<section class="bg-green-900 py-10 sm:py-15">
-  <div class="max-w-7xl mx-auto px-4 text-center fade-up">
+<section class="relative bg-green-900 overflow-hidden h-[240px] sm:h-[280px] flex items-center">
+  {bgImage && <div class="absolute inset-0 bg-cover bg-center opacity-25" style={`background-image:url('${bgImage}')`}></div>}
+  <div class="absolute inset-0 bg-black/30"></div>
+  <div class="relative max-w-7xl mx-auto px-4 py-12 sm:py-16 text-center fade-up w-full">
     <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
       {title}
     </h1>
-    <p class="text-green-100 text-xl max-w-3xl mx-auto">
+    <p class="text-white/90 text-lg sm:text-xl max-w-3xl mx-auto">
       {subtitle}
     </p>
   </div>
