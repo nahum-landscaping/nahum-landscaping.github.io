@@ -23,10 +23,7 @@ export const siteConfig = {
   social: {
     facebook: 'https://facebook.com/nahumjlandscaping',
     instagram: 'https://instagram.com/nahumjlandscaping',
-    google: 'https://g.page/nahumjlandscaping',
   },
-  // TODO: Replace with actual Google Business Profile URL
-  googleBusinessProfile: 'https://g.page/nahumjlandscaping',
   coordinates: {
     latitude: 28.8001,
     longitude: -81.2732,

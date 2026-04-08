@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { siteConfig } from '../config';
 import { Button, Section, SectionHeading, PhoneButton } from '../components/ui';
@@ -38,19 +39,20 @@ const services = [
   description="Nahum J Landscaping LLC. Lawn care and landscaping for homes in Sanford, FL. Locally owned, licensed & insured. Free estimates."
 >
   <!-- Hero Section -->
-  <section class="relative bg-green-900 overflow-hidden" style="height: calc(100svh - var(--header-height, 100px))">
+  <section class="relative bg-green-900 overflow-hidden" style="min-height: calc(100svh - var(--header-height, 64px))">
     <!-- TODO: Replace with actual hero image of completed landscaping project -->
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1920&q=80')] bg-cover bg-center opacity-30"></div>
-    <div class="relative max-w-7xl mx-auto px-4 h-full flex items-center">
+    <div class="absolute inset-0 bg-[url('/images/hero-lawn.jpg')] bg-cover bg-center opacity-30"></div>
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="relative max-w-7xl mx-auto px-4 py-12 sm:py-20 lg:py-28 flex items-center" style="min-height: inherit">
       <div class="max-w-2xl">
-        <p class="hero-enter text-green-300 font-semibold text-sm uppercase tracking-wide mb-3">Proudly Serving Sanford, FL</p>
-        <h1 class="hero-enter-delay text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+        <p class="hero-enter font-semibold text-xs sm:text-sm uppercase tracking-wide mb-2 sm:mb-3 text-white/90">Proudly Serving Sanford, FL</p>
+        <h1 class="hero-enter-delay text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 sm:mb-6">
           Lawn Care & Landscaping Done Right
         </h1>
-        <p class="hero-enter-delay-2 text-xl text-green-100 mb-8 leading-relaxed">
-          Locally owned and hands-on. We keep yards looking great across Sanford and Seminole County with weekly mowing, edging, landscaping, and more.
+        <p class="hero-enter-delay-2 text-base sm:text-xl text-green-100 mb-6 sm:mb-8 leading-relaxed">
+          Locally owned and hands-on. We keep yards looking great across Sanford, FL with weekly mowing, edging, landscaping, and more.
         </p>
-        <div class="hero-enter-delay-2 flex flex-col sm:flex-row gap-4">
+        <div class="hero-enter-delay-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Button href="/contact/" variant="primary" size="lg">Get a Free Estimate</Button>
           <PhoneButton />
         </div>
@@ -102,7 +104,7 @@ const services = [
   </section>
 
   <!-- Services Overview -->
-  <Section aria-labelledby="services-heading" class="!py-8 sm:!py-12">
+  <Section aria-labelledby="services-heading">
     <SectionHeading
       id="services-heading"
       title="What We Do"
@@ -154,6 +156,25 @@ const services = [
           height="600"
         />
       </div>
+    </div>
+  </Section>
+
+  <!-- Testimonials -->
+  <!-- TODO: Replace placeholder testimonials with real customer reviews -->
+  <Section aria-labelledby="testimonials-heading">
+    <SectionHeading
+      id="testimonials-heading"
+      title="What Our Customers Say"
+      subtitle="A few words from homeowners in Sanford."
+    />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-up">
+      {[
+        { quote: 'They mow our lawn every Thursday and it always looks great. Consistent, on time, and the edging is always clean. Best lawn service we\'ve had.', name: 'Maria T.', location: 'Historic Downtown Sanford' },
+        { quote: 'Nahum did a full bed renovation for us. Pulled everything out, laid new mulch, and planted shrubs that actually work in this heat. Yard looks completely different.', name: 'James R.', location: 'Sanford, FL' },
+        { quote: 'Honest pricing and they do what they say they\'ll do. We\'ve been using them for about six months now and haven\'t had a single issue.', name: 'Patricia L.', location: 'Sanford, FL' },
+      ].map((t) => (
+        <TestimonialCard quote={t.quote} name={t.name} location={t.location} />
+      ))}
     </div>
   </Section>
 

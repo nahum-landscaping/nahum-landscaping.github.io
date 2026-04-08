@@ -30,7 +30,23 @@ const { title, description, ogImage, type, noindex } = Astro.props;
     </main>
     <Footer />
     <script>
-      // Intersection Observer for scroll-triggered animations
+      // Fade-in animation system
+      // 1. Above-the-fold elements: animate in after a brief paint delay
+      // 2. Below-the-fold elements: animate in on scroll via IntersectionObserver
+      const elements = document.querySelectorAll('.fade-up');
+
+      // Stagger above-the-fold elements so they cascade in on page load
+      let staggerIndex = 0;
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const delay = 150 + (staggerIndex * 100);
+          setTimeout(() => el.classList.add('visible'), delay);
+          staggerIndex++;
+        }
+      });
+
+      // Observe below-the-fold elements for scroll-triggered animation
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -42,10 +58,12 @@ const { title, description, ogImage, type, noindex } = Astro.props;
         },
         { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
       );
-      // Delay observer start so opacity:0 paints first, then transition plays
-      setTimeout(() => {
-        document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
-      }, 300);
+
+      elements.forEach((el) => {
+        if (!el.classList.contains('visible')) {
+          observer.observe(el);
+        }
+      });
     </script>
   </body>
 </html>

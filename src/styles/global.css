@@ -30,6 +30,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Darken default body text for WCAG AA compliance */
+body {
+  color: #374151; /* gray-700 */
+}
+
 /* Ensure good tap targets on mobile — buttons and standalone links only */
 .btn, button, a[href^="tel"], a[href^="mailto"] {
   min-height: 44px;
@@ -103,6 +108,56 @@ html {
 
 .nav-link--active::after {
   transform: scaleX(1);
+}
+
+/* ─── Hamburger → X animation ─── */
+.hamburger-line {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.2s ease,
+              width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.is-active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(1px, -1px);
+  width: 100%;
+}
+
+.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.is-active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(1px, 1px);
+  width: 100%;
+}
+
+/* ─── Mobile menu slide-down + fade ─── */
+.mobile-menu {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Staggered link entrance */
+.mobile-menu-link {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition-delay: var(--delay, 0ms);
+}
+
+.mobile-menu.is-open .mobile-menu-link {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ─── Card hover lift ─── */

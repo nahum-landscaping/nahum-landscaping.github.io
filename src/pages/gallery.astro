@@ -1,20 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
-import { PageHeader, Section, Button, Badge } from '../components/ui';
+import { PageHeader, Section, Badge } from '../components/ui';
 
 // TODO: Replace ALL placeholder images with actual project photos
 const projects = [
-  { src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80', alt: 'Lush green lawn with clean edging in Sanford, FL', category: 'Lawn Care' },
-  { src: 'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=600&q=80', alt: 'Freshly mowed residential lawn with striped pattern', category: 'Lawn Care' },
-  { src: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80', alt: 'Tropical landscape design with palms and flowering plants', category: 'Landscaping' },
-  { src: 'https://images.unsplash.com/photo-1560749003-f4b1e17e2dff?w=600&q=80', alt: 'Maintained front yard with green grass and shrubs', category: 'Lawn Care' },
-  { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80', alt: 'Colorful flower beds with fresh mulch and healthy plants', category: 'Landscaping' },
-  { src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80', alt: 'Residential home with well-maintained lawn and landscaping', category: 'Lawn Care' },
-  { src: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=80', alt: 'Backyard with maintained grass and garden areas', category: 'Landscaping' },
-  { src: 'https://images.unsplash.com/photo-1589923188651-268a9765e432?w=600&q=80', alt: 'Garden pathway with trimmed hedges and plantings', category: 'Landscaping' },
-  { src: 'https://images.unsplash.com/photo-1557429287-b2e26467fc2b?w=600&q=80', alt: 'Clean lawn edging along a residential sidewalk', category: 'Lawn Care' },
+  { src: '/images/daniel-watson-8vBpYpTGo90-unsplash.jpg', alt: 'Lush green lawn with clean edging in Sanford, FL', category: 'Lawn Care' },
+  { src: '/images/Grass-Cutting-Lawrenceville-GA.jpg', alt: 'Freshly cut residential lawn with clean lines', category: 'Lawn Care' },
+  { src: '/images/360_F_724631497_FzznfnmeuP6WIXfM6uuQtPY4fCDL73mr.jpg', alt: 'Tropical landscape design with flowering plants', category: 'Landscaping' },
+  { src: '/images/360_F_85781068_MwcreyRycIzpDLVtm311btoFYikWURph.jpg', alt: 'Maintained front yard with green grass and shrubs', category: 'Lawn Care' },
+  { src: '/images/mulching-garden-beds.webp', alt: 'Garden bed with fresh mulch and healthy plants', category: 'Mulching' },
+  { src: '/images/gardener-mulching-pine-bark-juniper-plants-yard-seasonal-works-garden-landscape-design-ornamental-shrub-186896913.webp', alt: 'Mulching around ornamental shrubs and juniper plants', category: 'Mulching' },
+  { src: '/images/bush-1024x682.jpg', alt: 'Neatly trimmed bushes and hedges along property line', category: 'Landscaping' },
+  { src: '/images/Shearing-Plants-In-The-Garden-1000x667.jpg', alt: 'Hedge trimming and shaping in a residential garden', category: 'Landscaping' },
+  { src: '/images/360_F_334200452_zW4J8ij36GPGsxB4uNDuxynRmpohn3jd.jpg', alt: 'Well-maintained residential lawn and landscaping', category: 'Lawn Care' },
 ];
+
+const categories = ['All', 'Lawn Care', 'Landscaping', 'Mulching'];
 ---
 
 <BaseLayout
@@ -23,16 +25,31 @@ const projects = [
 >
   <PageHeader
     title="Our Work"
-    subtitle="Photos from jobs around Sanford and Seminole County. All placeholder images until we add real project photos."
+    subtitle="Recent work around Sanford, FL."
   />
 
-  <!-- Gallery Grid -->
   <Section aria-labelledby="gallery-heading">
     <h2 id="gallery-heading" class="sr-only">Project Gallery</h2>
-    <!-- TODO: Replace placeholder images with actual before/after project photos -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-up">
+
+    <!-- Category Filter Tabs -->
+    <div class="flex gap-2 mb-8 overflow-x-auto scrollbar-hide" role="tablist" aria-label="Filter by category">
+      {categories.map((cat) => (
+        <button
+          type="button"
+          role="tab"
+          class="gallery-filter px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap shrink-0"
+          data-category={cat}
+          aria-selected={cat === 'All' ? 'true' : 'false'}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- TODO: Replace placeholder images with actual project photos -->
+    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project) => (
-        <figure class="group rounded-xl overflow-hidden shadow-sm card-hover">
+        <figure class="gallery-item group rounded-xl overflow-hidden shadow-sm card-hover fade-up" data-category={project.category}>
           <div class="relative overflow-hidden">
             <img
               src={project.src}
@@ -52,13 +69,6 @@ const projects = [
         </figure>
       ))}
     </div>
-
-    <div class="text-center mt-10 fade-up">
-      <p class="text-gray-500 text-sm mb-4">
-        Want to see more? Follow us on social media for our latest projects.
-      </p>
-      <Button href="/contact/" size="lg">Get a Free Estimate</Button>
-    </div>
   </Section>
 
   <CTABanner
@@ -66,3 +76,58 @@ const projects = [
     text="Give us a call and we'll come take a look at your property. Free estimates, always."
   />
 </BaseLayout>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-filter {
+    background: transparent;
+    color: #15803d;
+    border: 1.5px solid #e8dcc8;
+    cursor: pointer;
+  }
+  .gallery-filter:hover {
+    background: #f0fdf4;
+    border-color: #15803d;
+  }
+  .gallery-filter[aria-selected="true"] {
+    background: #15803d;
+    color: white;
+    border-color: #15803d;
+  }
+  .gallery-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .gallery-item.hidden-item {
+    display: none;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll('.gallery-filter');
+  const items = document.querySelectorAll('.gallery-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      // Update active tab
+      buttons.forEach((b) => b.setAttribute('aria-selected', 'false'));
+      btn.setAttribute('aria-selected', 'true');
+
+      // Filter items
+      items.forEach((item) => {
+        if (category === 'All' || item.getAttribute('data-category') === category) {
+          item.classList.remove('hidden-item');
+        } else {
+          item.classList.add('hidden-item');
+        }
+      });
+    });
+  });
+</script>
